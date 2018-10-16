@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Text, View } from 'react-native';
-
+import { Text, View, Button, Alert } from 'react-native';
 import App from './App';
 
 describe('App', () => {
@@ -19,7 +18,27 @@ describe('App', () => {
           .find(Text)
           .dive()
           .text()
-      ).toEqual('Open');
+      ).toEqual('Openspec');
+    });
+
+    it('renders Button with text "Ajouter Un article"', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.find(Button).prop('title')).toEqual('Ajouter Un article');
+    });
+
+    describe('Showing alert on button press with message "Touché"', () => {
+      it('renders alert', () => {
+        const spy = jest.spyOn(Alert, 'alert');
+        const wrapper = shallow(<App />);
+        wrapper.find(Button).simulate('Press');
+        expect(spy).toHaveBeenCalled();
+      });
+
+      it('renders message "Touché"', () => {
+        const wrapper = shallow(<App />);
+        wrapper.find(Button).simulate('Press');
+        expect(Alert.alert.mock.calls[0][0]).toEqual('Touché');
+      });
     });
   });
 });

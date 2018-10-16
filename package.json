@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "husky": {
     "hooks": {
@@ -40,7 +40,8 @@
     "prettier": "^1.14.3",
     "react": "16.3.1",
     "react-dom": "^16.5.2",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
+    "sinon": "^7.0.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^3.1.0",

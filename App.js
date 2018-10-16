@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,10 +10,32 @@ const styles = StyleSheet.create({
   },
 });
 
-const App = () => (
-  <View style={styles.container}>
-    <Text>Open</Text>
-  </View>
-);
+// const App = () => (
+//   <View style={styles.container}>
+//     <Button title="Ajouter Un article" />
+//     <Text>Openspec</Text>
+//   </View>
+// );
+
+// export default App;
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Button
+          title="Ajouter Un article"
+          onPress={() => Alert.alert('Touché')}
+        />
+        <Text>Openspec</Text>
+      </View>
+    );
+  }
+}
 
 export default App;
