@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { View } from 'react-native';
 import App from './App';
-import Header from './Components/Header';
-import Segment from './Components/Segment';
+import HeaderItem from './components/HeaderItem';
+import Segment from './components/Segment';
 
 describe('App', () => {
   it('renders View', () => {
@@ -13,7 +13,7 @@ describe('App', () => {
   describe('Within the view', () => {
     it('render Header', () => {
       const wrapper = shallow(<View />);
-      expect(wrapper.find(Header));
+      expect(wrapper.find(HeaderItem));
     });
     it('render Segment', () => {
       const wrapper = shallow(<View />);

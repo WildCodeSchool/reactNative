@@ -22,6 +22,9 @@
   },
   "jest": {
     "preset": "react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+    ],
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   },
   "dependencies": {
@@ -42,7 +45,10 @@
     "react": "16.3.1",
     "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
-    "sinon": "^7.0.0"
+    "react-native-elements": "^0.19.1",
+    "react-native-vector-icons": "^6.0.2",
+    "sinon": "^7.0.0",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "eslint-config-prettier": "^3.1.0",
