@@ -4,6 +4,10 @@
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-wrap-multilines": [
+      "error",
+      { "declaration": false, "assignment": false }
+    ],
     "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
     "react/forbid-prop-types": [0, { "forbid": [] }],
     "import/extensions": [1, "never", { "svg": "always" }],
