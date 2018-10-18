@@ -17,7 +17,7 @@ export default class App extends React.Component {
     this.state = {};
   }
 
-  componentWillMount() {
+  componentDidMount() {
     firebase.initializeApp({
       apiKey: 'AIzaSyCogKIlxdZhndoksUKFJvUcaJ01DbwHCMM',
       authDomain: 'projet2alternance.firebaseapp.com',
