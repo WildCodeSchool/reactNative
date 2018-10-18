@@ -1,6 +1,9 @@
 import React from 'react';
 import firebase from 'firebase';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+
+import Header from './Components/Header';
+import Segment from './Components/Segment';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +34,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello World !</Text>
+        <Header />
+        <Segment />
       </View>
     );
   }
