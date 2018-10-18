@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert } from 'react-native';
+import firebase from 'firebase';
+import { StyleSheet, Text, View } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,32 +11,28 @@ const styles = StyleSheet.create({
   },
 });
 
-// const App = () => (
-//   <View style={styles.container}>
-//     <Button title="Ajouter Un article" />
-//     <Text>Openspec</Text>
-//   </View>
-// );
-
-// export default App;
-
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  componentWillMount() {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyCogKIlxdZhndoksUKFJvUcaJ01DbwHCMM',
+      authDomain: 'projet2alternance.firebaseapp.com',
+      databaseURL: 'https://projet2alternance.firebaseio.com',
+      projectId: 'projet2alternance',
+      storageBucket: 'projet2alternance.appspot.com',
+      messagingSenderId: '663474905671',
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Button
-          title="Ajouter Un article"
-          onPress={() => Alert.alert('Touché')}
-        />
-        <Text>Openspec</Text>
+        <Text>Hello World !</Text>
       </View>
     );
   }
 }
-
-export default App;
