@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
 
 class ArticlesAll extends Component {
   constructor(props) {
@@ -9,8 +16,8 @@ class ArticlesAll extends Component {
 
   render() {
     return (
-      <View>
-        <Text>Hello Articles All !</Text>
+      <View style={styles.container}>
+        <Text>All articles</Text>
       </View>
     );
   }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { ButtonGroup } from 'react-native-elements';
 import { Text, View } from 'react-native';
+import ArticlesAll from './ArticlesAll';
+import ArticlesToRead from './ArticlesToRead';
+import MyArticles from './MyArticles';
 
 const component1 = () => <Text>All articles</Text>;
 const component2 = () => <Text>Articles to read</Text>;
@@ -29,13 +32,13 @@ class Segment extends Component {
     let rendering;
     switch (selectedIndex) {
       case 0:
-        rendering = 'hi 0';
+        rendering = <ArticlesAll />;
         break;
       case 1:
-        rendering = 'hi 1';
+        rendering = <ArticlesToRead />;
         break;
       case 2:
-        rendering = 'hi 2';
+        rendering = <MyArticles />;
         break;
       default:
         return null;
