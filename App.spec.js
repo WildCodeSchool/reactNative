@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { View } from 'react-native';
 import App from './App';
-import Header from './Components/Header';
-import Segment from './Components/Segment';
+import Header from './components/Header';
+import Segment from './components/Segment';
 
 describe('App', () => {
   it('renders View', () => {

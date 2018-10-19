@@ -2,8 +2,8 @@ import React from 'react';
 import firebase from 'firebase';
 import { StyleSheet, View } from 'react-native';
 
-import Header from './Components/Header';
-import Segment from './Components/Segment';
+import Header from './components/Header';
+import Segment from './components/Segment';
 
 const styles = StyleSheet.create({
   container: {
