@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ButtonGroup } from 'react-native-elements';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import ArticlesAll from '../components/ArticlesAll';
 
 const component1 = () => <Text>All articles</Text>;
 const component2 = () => <Text>Articles to read</Text>;
@@ -12,6 +13,7 @@ class Segment extends Component {
     this.state = {
       selectedIndex: 0,
     };
+    this.updateIndex = this.updateIndex.bind(this);
   }
 
   updateIndex(selectedIndex) {
@@ -25,13 +27,18 @@ class Segment extends Component {
       { element: component3 },
     ];
     const { selectedIndex } = this.state;
+
     return (
-      <ButtonGroup
-        selectedIndex={selectedIndex}
-        onPress={() => console.log('Hello')}
-        buttons={buttons}
-        containerStyle={{ height: 50 }}
-      />
+      <View>
+        <ButtonGroup
+          selectedIndex={selectedIndex}
+          onPress={this.updateIndex}
+          buttons={buttons}
+          containerStyle={{ height: 50 }}
+        />
+        <ArticlesAll />
+        {/* <Route exact path={routes.SIGN_IN} component={SignIn} /> */}
+      </View>
     );
   }
 }
