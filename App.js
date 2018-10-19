@@ -2,15 +2,13 @@ import React from 'react';
 import firebase from 'firebase';
 import { StyleSheet, View } from 'react-native';
 
-import Header from './components/Header';
+import HeaderItem from './components/HeaderItem';
 import Segment from './components/Segment';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
 
@@ -34,7 +32,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header />
+        <HeaderItem />
         <Segment />
       </View>
     );
