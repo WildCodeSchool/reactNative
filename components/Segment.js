@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ButtonGroup } from 'react-native-elements';
 import { Text, View } from 'react-native';
-import ArticlesAll from '../components/ArticlesAll';
+import ArticlesAll from './ArticlesAll';
 
 const component1 = () => <Text>All articles</Text>;
 const component2 = () => <Text>Articles to read</Text>;

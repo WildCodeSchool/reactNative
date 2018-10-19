@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { ButtonGroup } from 'react-native-elements';
-import Segment from '../components/Segment';
+import Segment from './Segment';
 
 describe('Segment', () => {
   it('renders a Button group', () => {

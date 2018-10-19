@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Header, Icon } from 'react-native-elements';
-import HeaderItem from '../components/HeaderItem';
+import HeaderItem from './HeaderItem';
 
 describe('HeaderItem', () => {
   it('renders a header', () => {
