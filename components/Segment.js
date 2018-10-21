@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import ArticlesAll from './ArticlesAll';
 import ArticlesToRead from './ArticlesToRead';
 import MyArticles from './MyArticles';
+import HeaderItem from './HeaderItem';
 
 const component1 = () => <Text>All articles</Text>;
 const component2 = () => <Text>Articles to read</Text>;
@@ -45,14 +46,15 @@ class Segment extends Component {
     }
 
     return (
-      <View>
+      <View style={{ flex: 1 }}>
+        <HeaderItem />
         <ButtonGroup
           selectedIndex={selectedIndex}
           onPress={this.updateIndex}
           buttons={buttons}
           containerStyle={{ height: 50 }}
         />
-        <Text>{rendering}</Text>
+        <View style={{ flex: 1 }}>{rendering}</View>
       </View>
     );
   }

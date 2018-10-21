@@ -1,23 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { View } from 'react-native';
+import { NativeRouter, Route } from 'react-router-native';
+
 import App from './App';
-import HeaderItem from './components/HeaderItem';
-import Segment from './components/Segment';
 
 describe('App', () => {
-  it('renders View', () => {
+  it('it has a NativeRouter component', () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.find(View));
+    expect(wrapper.find(NativeRouter));
   });
-  describe('Within the view', () => {
-    it('render Header', () => {
-      const wrapper = shallow(<View />);
-      expect(wrapper.find(HeaderItem));
+  describe('Within the NativeRouter', () => {
+    it('it render a View', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.find(View));
     });
-    it('render Segment', () => {
-      const wrapper = shallow(<View />);
-      expect(wrapper.find(Segment));
+  });
+  describe('Within the View', () => {
+    it('it has 2 route components', () => {
+      const wrapper = shallow(<App />);
+      expect(wrapper.find(Route)).toHaveLength(2);
     });
   });
 });

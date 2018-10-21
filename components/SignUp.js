@@ -4,7 +4,18 @@ import {
   FormLabel,
   FormValidationMessage,
 } from 'react-native-elements';
-import { Alert, Button, View } from 'react-native';
+import PropTypes from 'prop-types';
+import { Button, View, StyleSheet } from 'react-native';
+import { withRouter } from 'react-router-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -13,8 +24,9 @@ class SignUp extends React.Component {
   }
 
   render() {
+    const { history } = this.props;
     return (
-      <View>
+      <View style={styles.container}>
         <FormLabel>Username</FormLabel>
         <FormInput />
         <FormValidationMessage>This field is required</FormValidationMessage>
@@ -24,10 +36,13 @@ class SignUp extends React.Component {
         <FormLabel>Password</FormLabel>
         <FormInput />
         <FormValidationMessage>This field is required</FormValidationMessage>
-        <Button title="SUBMIT" onPress={() => Alert.alert('Touché')} />
+        <Button title="SUBMIT" onPress={() => history.push('/articles')} />
       </View>
     );
   }
 }
+SignUp.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
-export default SignUp;
+export default withRouter(SignUp);

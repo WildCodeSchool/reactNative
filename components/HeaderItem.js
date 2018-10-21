@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Header, Icon } from 'react-native-elements';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-native';
 
 class HeaderItem extends Component {
   constructor(props) {
@@ -8,6 +10,7 @@ class HeaderItem extends Component {
   }
 
   render() {
+    const { history } = this.props;
     return (
       <Header
         centerComponent={{ text: 'TITLE', style: { color: '#fff' } }}
@@ -16,7 +19,7 @@ class HeaderItem extends Component {
             name="sign-out"
             type="octicon"
             color="#fff"
-            onPress={() => console.log('hello')}
+            onPress={() => history.push('/')}
           />
         }
       />
@@ -24,4 +27,8 @@ class HeaderItem extends Component {
   }
 }
 
-export default HeaderItem;
+HeaderItem.propTypes = {
+  history: PropTypes.object.isRequired,
+};
+
+export default withRouter(HeaderItem);
