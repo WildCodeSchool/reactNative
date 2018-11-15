@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 import ArticlesAll from './ArticlesAll';
 
 describe('ArticlesAll', () => {
-  it('renders text "Articles To Read"', () => {
+  it('renders text "All Articles"', () => {
     const wrapper = shallow(<ArticlesAll />);
     expect(
       wrapper
