@@ -23,7 +23,7 @@
   "jest": {
     "preset": "react-native",
     "transformIgnorePatterns": [
-      "node_modules/(?!react-native|expo|react-navigation|native-base-shoutem-theme|@shoutem/theme|@shoutem/animation|@shoutem/ui|tcomb-form-native)"
+      "node_modules/(?!react-native|react-router-native)/"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   },
@@ -41,7 +41,9 @@
     "husky": "^1.1.2",
     "jest": "^23.6.0",
     "lint-staged": "^7.3.0",
+    "mockfirebase": "^0.12.0",
     "prettier": "^1.14.3",
+    "prop-types": "^15.6.2",
     "react": "16.3.1",
     "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
