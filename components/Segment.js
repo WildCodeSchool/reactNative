@@ -54,7 +54,7 @@ class Segment extends Component {
           buttons={buttons}
           containerStyle={{ height: 50 }}
         />
-        <View style={{ flex: 1 }}>{rendering}</View>
+        <View style={{ flex: 1, padding: 15 }}>{rendering}</View>
       </View>
     );
   }
