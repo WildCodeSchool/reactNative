@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import ModalAddArticle from './ModalAddArticle';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    justifyContent: 'space-between',
   },
 });
 
@@ -17,7 +19,12 @@ class ArticlesAll extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>All articles</Text>
+        <ScrollView>
+          <Text>All articles</Text>
+        </ScrollView>
+        <View>
+          <ModalAddArticle />
+        </View>
       </View>
     );
   }
