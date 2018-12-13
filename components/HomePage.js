@@ -39,7 +39,7 @@ class HomePage extends React.Component {
         <View style={{ flex: 1 }}>
           <Button
             title="S'identifier"
-            onPress={() => history.push('/signup')}
+            onPress={() => history.push('/signin')}
           />
 
           <Button
