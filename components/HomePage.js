@@ -41,7 +41,7 @@ class HomePage extends React.Component {
         <View style={styles.button_container}>
           <Button
             title="S'identifier"
-            onPress={() => history.push('/signup')}
+            onPress={() => history.push('/signin')}
           />
           <Button title="S'inscrire" onPress={() => history.push('/signup')} />
         </View>

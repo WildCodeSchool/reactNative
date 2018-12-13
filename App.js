@@ -6,6 +6,7 @@ import { NativeRouter, Route } from 'react-router-native';
 import Segment from './components/Segment';
 import SignUp from './components/SignUp';
 import HomePage from './components/HomePage';
+import SignIn from './components/SignIn';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,6 +41,7 @@ export default class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/articles" component={Segment} />
+          <Route exact path="/signin" component={SignIn} />
         </View>
       </NativeRouter>
     );

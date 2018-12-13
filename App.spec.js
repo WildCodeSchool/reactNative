@@ -19,7 +19,7 @@ describe('App', () => {
   describe('Within the View', () => {
     it('it has 2 route components', () => {
       const wrapper = shallow(<App />);
-      expect(wrapper.find(Route)).toHaveLength(3);
+      expect(wrapper.find(Route)).toHaveLength(4);
     });
   });
 });
