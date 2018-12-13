@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-native';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
-  image: {
+  image_container: {
     marginLeft: 10,
     marginRight: 10,
     marginTop: 50,
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     width: 310,
     height: 300,
   },
-  button: {
+  button_container: {
     flex: 1,
     flexDirection: 'column',
     borderRadius: 25,
