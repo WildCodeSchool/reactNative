@@ -3,6 +3,7 @@ const express = require('express');
 const { getDocumentData } = require('./scrape');
 
 const saveArticle = async (req, res) => {
+  console.log('coucou');
   const { body } = req;
   const { url } = body;
   const documentData = await getDocumentData(url);
