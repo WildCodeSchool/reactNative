@@ -54,6 +54,7 @@
     "react-router-native": "^4.3.0",
     "request-promise": "^4.2.2",
     "sinon": "^7.0.0",
+    "validator": "^10.9.0",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
