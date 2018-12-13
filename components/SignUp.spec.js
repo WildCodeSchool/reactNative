@@ -5,7 +5,7 @@ import {
   FormLabel,
   FormValidationMessage,
 } from 'react-native-elements';
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
 
 import SignUp from './SignUp';
 
@@ -26,16 +26,6 @@ describe('SignUp', () => {
     it('render FormValidationMessage', () => {
       const SignInWrapper = shallow(<SignUp.WrappedComponent />);
       expect(SignInWrapper.find(FormValidationMessage)).toHaveLength(3);
-    });
-    describe('Show ArticlesAll onPress', () => {
-      it('redirect to path "./articles', () => {
-        const historyMock = { push: jest.fn() };
-        const SignInWrapper = shallow(
-          <SignUp.WrappedComponent history={historyMock} />
-        );
-        SignInWrapper.find(Button).simulate('Press');
-        expect(historyMock.push.mock.calls[0]).toEqual(['/articles']);
-      });
     });
   });
 });

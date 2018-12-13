@@ -1,23 +1,19 @@
 import React from 'react';
-import { View, Button, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
 import { withRouter } from 'react-router-native';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   image_container: {
-    marginLeft: 10,
-    marginRight: 10,
+    // marginRight: 10,
     marginTop: 50,
     marginBottom: 40,
-    width: 310,
-    height: 300,
+    width: 250,
+    height: 250,
   },
-  button_container: {
-    flex: 1,
-    flexDirection: 'column',
-    borderRadius: 25,
-    justifyContent: 'space-between',
-    marginBottom: 40,
+  button: {
+    marginTop: 20,
   },
 });
 
@@ -30,20 +26,27 @@ class HomePage extends React.Component {
   render() {
     const { history } = this.props;
     return (
-      <View>
-        <Image
-          source={{
-            uri:
-              'https://pbs.twimg.com/profile_images/486929358120964097/gNLINY67_400x400.png',
-          }}
-          style={styles.image_container}
-        />
-        <View style={styles.button_container}>
+      <View style={{ flex: 1 }}>
+        <View style={{ alignItems: 'center' }}>
+          <Image
+            source={{
+              uri:
+                'https://i2.wp.com/www.freespirittours.net/wp-content/uploads/2018/03/article-icon.png',
+            }}
+            style={styles.image_container}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
           <Button
             title="S'identifier"
             onPress={() => history.push('/signup')}
           />
-          <Button title="S'inscrire" onPress={() => history.push('/signup')} />
+
+          <Button
+            buttonStyle={styles.button}
+            title="S'inscrire"
+            onPress={() => history.push('/signup')}
+          />
         </View>
       </View>
     );

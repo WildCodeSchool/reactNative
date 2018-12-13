@@ -3,15 +3,10 @@ import {
   FormInput,
   FormLabel,
   FormValidationMessage,
+  Button,
 } from 'react-native-elements';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  View,
-  StyleSheet,
-  Alert,
-  KeyboardAvoidingView,
-} from 'react-native';
+import { View, StyleSheet, Alert, KeyboardAvoidingView } from 'react-native';
 import { withRouter } from 'react-router-native';
 import validator from 'validator';
 import fire from '../firebase/firebase';
@@ -42,8 +37,8 @@ class SignUp extends React.Component {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(() => this.setState({ loading: false }))
       .then(() => {
-        this.setState({ loading: false });
         history.push('/articles');
       })
       .catch(error => Alert.alert(error.message));
