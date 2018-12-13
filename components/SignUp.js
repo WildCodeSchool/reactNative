@@ -5,39 +5,90 @@ import {
   FormValidationMessage,
 } from 'react-native-elements';
 import PropTypes from 'prop-types';
-import { Button, View, StyleSheet } from 'react-native';
+import {
+  Button,
+  View,
+  StyleSheet,
+  Alert,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { withRouter } from 'react-router-native';
+import validator from 'validator';
+import fire from '../firebase/firebase';
 
 const styles = StyleSheet.create({
-  container: {
+  view: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
   },
 });
 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      loading: false,
+    };
   }
 
-  render() {
+  createUser = () => {
+    const { email, password } = this.state;
     const { history } = this.props;
+    this.setState({ loading: true });
+    fire
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState({ loading: false });
+        history.push('/articles');
+      })
+      .catch(error => Alert.alert(error.message));
+  };
+
+  render() {
+    const { username, email, password, loading } = this.state;
     return (
-      <View style={styles.container}>
-        <FormLabel>Username</FormLabel>
-        <FormInput />
-        <FormValidationMessage>This field is required</FormValidationMessage>
-        <FormLabel>Email</FormLabel>
-        <FormInput />
-        <FormValidationMessage>This field is required</FormValidationMessage>
-        <FormLabel>Password</FormLabel>
-        <FormInput />
-        <FormValidationMessage>This field is required</FormValidationMessage>
-        <Button title="SUBMIT" onPress={() => history.push('/articles')} />
-      </View>
+      <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
+        <View style={styles.view}>
+          <FormLabel>Username</FormLabel>
+          <FormInput
+            keyboardType="default"
+            value={username}
+            onChangeText={value => this.setState({ username: value })}
+          />
+          <FormValidationMessage>
+            {validator.isEmpty(username) ? 'This field is required' : null}
+          </FormValidationMessage>
+          <FormLabel>Email</FormLabel>
+          <FormInput
+            value={email}
+            keyboardType="email-address"
+            onChangeText={value => this.setState({ email: value })}
+          />
+          <FormValidationMessage>
+            {validator.isEmpty(email) ? 'This field is required' : null}
+          </FormValidationMessage>
+          <FormLabel>Password</FormLabel>
+          <FormInput
+            value={password}
+            secureTextEntry
+            onChangeText={value => this.setState({ password: value })}
+          />
+          <FormValidationMessage>
+            {validator.isEmpty(password) ? 'This field is required' : null}
+          </FormValidationMessage>
+          <Button
+            buttonStyle={styles.button}
+            title="SUBMIT"
+            onPress={this.createUser}
+            loading={loading}
+          />
+        </View>
+      </KeyboardAvoidingView>
     );
   }
 }
