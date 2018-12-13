@@ -4,8 +4,8 @@ import { StyleSheet, View } from 'react-native';
 import { NativeRouter, Route } from 'react-router-native';
 
 import Segment from './components/Segment';
-
 import SignUp from './components/SignUp';
+import HomePage from './components/HomePage';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,7 +37,8 @@ export default class App extends React.Component {
     return (
       <NativeRouter>
         <View style={styles.container}>
-          <Route exact path="/" component={SignUp} />
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/signup" component={SignUp} />
           <Route exact path="/articles" component={Segment} />
         </View>
       </NativeRouter>
