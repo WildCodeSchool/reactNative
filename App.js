@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+// import _ from 'lodash';
 import { StyleSheet, View, YellowBox } from 'react-native';
 import { NativeRouter, Route } from 'react-router-native';
 import Segment from './components/Segment';
@@ -22,12 +22,13 @@ export default class App extends React.Component {
 
   componentDidMount() {
     YellowBox.ignoreWarnings(['Setting a timer']);
-    const _console = _.clone(console);
+    /* const _console = _.clone(console);
     console.warn = message => {
       if (message.indexOf('Setting a timer') <= -1) {
         _console.warn(message);
       }
     };
+    */
   }
 
   render() {

@@ -33,7 +33,7 @@ class MyArticles extends React.Component {
       articles: [],
     };
   }
-  
+
   componentDidMount() {
     const articles = [];
     this.setState({ loading: true });
@@ -55,17 +55,19 @@ class MyArticles extends React.Component {
           this.setState({
             articles,
             loading: false,
+            // because it is unused for now :
+            // eslint-disable-next-line
             uid: user.uid,
           });
         })
         .catch(error => Alert.alert(error));
     });
   }
-  
+
   componentWillUnmount() {
     this.ref();
   }
-  
+
   render() {
     const { loading, articles = [] } = this.state;
     return (
@@ -79,7 +81,7 @@ class MyArticles extends React.Component {
         >
           {loading ? (
             <View style={styles.view}>
-              <ActivityIndicator/>
+              <ActivityIndicator />
             </View>
           ) : (
             <ScrollView>
@@ -94,7 +96,11 @@ class MyArticles extends React.Component {
                     subtitle={item.description}
                     onPress={() => Linking.openURL(item.url)}
                     titleStyle={{ color: 'white' }}
-                    subtitleStyle={{ color: 'white', fontStyle: 'italic', fontSize: 15}}
+                    subtitleStyle={{
+                      color: 'white',
+                      fontStyle: 'italic',
+                      fontSize: 15,
+                    }}
                   />
                 )}
               />

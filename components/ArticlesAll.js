@@ -31,7 +31,7 @@ class ArticlesAll extends Component {
       articles: [],
     };
   }
-  
+
   componentDidMount() {
     const articles = [];
     this.setState({ loading: true });
@@ -60,11 +60,11 @@ class ArticlesAll extends Component {
       }
     });
   }
-  
+
   componentWillUnmount() {
     this.ref();
   }
-  
+
   render() {
     const { loading, articles = [], uid, name } = this.state;
     return (
@@ -78,7 +78,7 @@ class ArticlesAll extends Component {
         >
           {loading ? (
             <View style={styles.view}>
-              <ActivityIndicator/>
+              <ActivityIndicator />
             </View>
           ) : (
             <ScrollView>
@@ -86,7 +86,13 @@ class ArticlesAll extends Component {
                 data={articles}
                 renderItem={({ item }) => (
                   <View>
-                    <Text style={{color:'white', fontStyle:'italic', fontSize: 15}}>
+                    <Text
+                      style={{
+                        color: 'white',
+                        fontStyle: 'italic',
+                        fontSize: 15,
+                      }}
+                    >
                       Ajouté par
                       {item.name}
                     </Text>
@@ -98,7 +104,11 @@ class ArticlesAll extends Component {
                       subtitle={item.description}
                       onPress={() => Linking.openURL(item.url)}
                       titleStyle={{ color: 'white' }}
-                      subtitleStyle={{ color: 'white', fontStyle: 'italic', fontSize: 15}}
+                      subtitleStyle={{
+                        color: 'white',
+                        fontStyle: 'italic',
+                        fontSize: 15,
+                      }}
                     />
                   </View>
                 )}
@@ -106,7 +116,7 @@ class ArticlesAll extends Component {
             </ScrollView>
           )}
           <View>
-            <ModalAddArticle uid={uid} name={name}/>
+            <ModalAddArticle uid={uid} name={name} />
           </View>
         </ImageBackground>
       </View>

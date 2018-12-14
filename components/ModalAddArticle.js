@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Modal, View, Alert, TextInput, ImageBackground } from 'react-native';
 import { Button, Header } from 'react-native-elements';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class ModalAddArticle extends Component {
   state = {
@@ -17,7 +18,7 @@ class ModalAddArticle extends Component {
     const { url } = this.state;
     const { uid, name } = this.props;
     axios
-      .post('http://192.168.1.79:3004/articles', {
+      .post('http://192.168.1.146:3004/articles', {
         url,
         uid,
         name,
@@ -115,5 +116,10 @@ class ModalAddArticle extends Component {
     );
   }
 }
+
+ModalAddArticle.propTypes = {
+  uid: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default ModalAddArticle;

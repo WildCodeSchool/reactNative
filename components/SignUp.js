@@ -49,7 +49,7 @@ class SignUp extends React.Component {
       loading: false,
     };
   }
-  
+
   createUser = () => {
     const { email, password, username } = this.state;
     const { history } = this.props;
@@ -79,10 +79,9 @@ class SignUp extends React.Component {
         Alert.alert(error.message);
       });
   };
-  
+
   render() {
     const { username, email, password, loading } = this.state;
-    const { history } = this.props;
     return (
       <ImageBackground
         source={{
@@ -135,7 +134,6 @@ class SignUp extends React.Component {
     );
   }
 }
-
 
 SignUp.propTypes = {
   history: PropTypes.object.isRequired,
