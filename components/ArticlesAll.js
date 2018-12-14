@@ -78,7 +78,7 @@ class ArticlesAll extends Component {
         >
           {loading ? (
             <View style={styles.view}>
-              <ActivityIndicator/>
+              <ActivityIndicator />
             </View>
           ) : (
             <ScrollView>
@@ -98,7 +98,11 @@ class ArticlesAll extends Component {
                       subtitle={item.description}
                       onPress={() => Linking.openURL(item.url)}
                       titleStyle={{ color: 'white' }}
-                      subtitleStyle={{ color: 'white', fontStyle: 'italic', fontSize: 15}}
+                      subtitleStyle={{
+                        color: 'white',
+                        fontStyle: 'italic',
+                        fontSize: 15,
+                      }}
                     />
                   </View>
                 )}
@@ -106,7 +110,7 @@ class ArticlesAll extends Component {
             </ScrollView>
           )}
           <View>
-            <ModalAddArticle uid={uid} name={name}/>
+            <ModalAddArticle uid={uid} name={name} />
           </View>
         </ImageBackground>
       </View>

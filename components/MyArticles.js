@@ -55,7 +55,6 @@ class MyArticles extends React.Component {
           this.setState({
             articles,
             loading: false,
-            uid: user.uid,
           });
         })
         .catch(error => Alert.alert(error));
@@ -94,7 +93,11 @@ class MyArticles extends React.Component {
                     subtitle={item.description}
                     onPress={() => Linking.openURL(item.url)}
                     titleStyle={{ color: 'white' }}
-                    subtitleStyle={{ color: 'white', fontStyle: 'italic', fontSize: 15}}
+                    subtitleStyle={{
+                      color: 'white',
+                      fontStyle: 'italic',
+                      fontSize: 15,
+                    }}
                   />
                 )}
               />
