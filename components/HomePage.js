@@ -6,14 +6,16 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   image_container: {
-    // marginRight: 10,
-    marginTop: 50,
+    backgroundColor: 'black',
+    marginTop: 70,
     marginBottom: 40,
     width: 250,
     height: 250,
   },
   button: {
+    height: 50,
     marginTop: 20,
+    backgroundColor: '#B9B9B9',
   },
 });
 
@@ -26,22 +28,22 @@ class HomePage extends React.Component {
   render() {
     const { history } = this.props;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
         <View style={{ alignItems: 'center' }}>
           <Image
             source={{
               uri:
-                'https://i2.wp.com/www.freespirittours.net/wp-content/uploads/2018/03/article-icon.png',
+                'http://partageetsignature.p.a.pic.centerblog.net/709ea002.gif',
             }}
             style={styles.image_container}
           />
         </View>
         <View style={{ flex: 1 }}>
           <Button
+            buttonStyle={styles.button}
             title="S'identifier"
             onPress={() => history.push('/signin')}
           />
-
           <Button
             buttonStyle={styles.button}
             title="S'inscrire"

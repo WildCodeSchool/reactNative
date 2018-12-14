@@ -40,9 +40,10 @@ class HeaderItem extends Component {
     const { name } = this.state;
     return (
       <Header
-        centerComponent={{ text: 'Wild News', style: { color: '#fff' } }}
+        centerComponent={{ text: 'DARK SIDE', style: { color: '#fff' } }}
         rightComponent={
           <Icon
+            style={{ backgroundColor: 'black' }}
             name="sign-out"
             type="octicon"
             color="#fff"
