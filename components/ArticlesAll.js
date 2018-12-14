@@ -8,8 +8,7 @@ import {
   FlatList,
   Alert,
   Linking,
-  Text,
-  ImageBackground
+  ImageBackground,
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import ModalAddArticle from './ModalAddArticle';
@@ -77,37 +76,50 @@ class ArticlesAll extends Component {
           }}
           style={{ width: '100%', height: '100%', borderColor: 'black' }}
         >
-        {loading ? (
-          <View style={styles.view}>
-            <ActivityIndicator />
+          {loading ? (
+            <View style={styles.view}>
+              <ActivityIndicator />
+            </View>
+          ) : (
+            <ScrollView>
+              <FlatList
+                data={articles}
+                renderItem={({ item }) => (
+                  <View>
+                    <Text
+                      style={{
+                        color: 'white',
+                        fontStyle: 'italic',
+                        fontSize: 15,
+                      }}
+                    >
+                      Ajouté par
+                      {item.name}
+                    </Text>
+                    <ListItem
+                      avatar={{ uri: item.imageUrl }}
+                      key={item.key}
+                      title={item.title}
+                      subtitleNumberOfLines={5}
+                      subtitle={item.description}
+                      onPress={() => Linking.openURL(item.url)}
+                      titleStyle={{ color: 'white' }}
+                      subtitleStyle={{
+                        color: 'white',
+                        fontStyle: 'italic',
+                        fontSize: 15,
+                      }}
+                    />
+                  </View>
+                )}
+              />
+            </ScrollView>
+          )}
+          <View>
+            <ModalAddArticle uid={uid} name={name} />
           </View>
-        ) : (
-          <ScrollView>
-            <FlatList
-              data={articles}
-              renderItem={({ item }) => (
-                <View>
-                  <Text>
-                    Ajouté par
-                    {item.name}
-                  </Text>
-                  <ListItem
-                    avatar={{ uri: item.imageUrl }}
-                    key={item.key}
-                    title={item.title}
-                    subtitleNumberOfLines={5}
-                    subtitle={item.description}
-                    onPress={() => Linking.openURL(item.url)}
-                  />
-                </View>
-              )}
-            />
-          </ScrollView>
-        )}
-        <View>
-          <ModalAddArticle uid={uid} name={name} />
-        </View>
         </ImageBackground>
+      </View>
     );
   }
 }

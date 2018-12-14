@@ -33,7 +33,7 @@ class MyArticles extends React.Component {
       articles: [],
     };
   }
-
+  
   componentDidMount() {
     const articles = [];
     this.setState({ loading: true });
@@ -55,17 +55,16 @@ class MyArticles extends React.Component {
           this.setState({
             articles,
             loading: false,
-            uid: user.uid,
           });
         })
         .catch(error => Alert.alert(error));
     });
   }
-
+  
   componentWillUnmount() {
     this.ref();
   }
-
+  
   render() {
     const { loading, articles = [] } = this.state;
     return (
@@ -77,30 +76,37 @@ class MyArticles extends React.Component {
           }}
           style={{ width: '100%', height: '100%', borderColor: 'black' }}
         >
-        {loading ? (
-          <View style={styles.view}>
-            <ActivityIndicator />
-          </View>
-        ) : (
-          <ScrollView>
-            <FlatList
-              data={articles}
-              renderItem={({ item }) => (
-                <ListItem
-                  avatar={{ uri: item.imageUrl }}
-                  key={item.key}
-                  title={item.title}
-                  subtitleNumberOfLines={5}
-                  subtitle={item.description}
-                  onPress={() => Linking.openURL(item.url)}
-                />
-              )}
-            />
-          </ScrollView>
-        )}
+          {loading ? (
+            <View style={styles.view}>
+              <ActivityIndicator/>
+            </View>
+          ) : (
+            <ScrollView>
+              <FlatList
+                data={articles}
+                renderItem={({ item }) => (
+                  <ListItem
+                    avatar={{ uri: item.imageUrl }}
+                    key={item.key}
+                    title={item.title}
+                    subtitleNumberOfLines={5}
+                    subtitle={item.description}
+                    onPress={() => Linking.openURL(item.url)}
+                    titleStyle={{ color: 'white' }}
+                    subtitleStyle={{
+                      color: 'white',
+                      fontStyle: 'italic',
+                      fontSize: 15,
+                    }}
+                  />
+                )}
+              />
+            </ScrollView>
+          )}
         </ImageBackground>
       </View>
     );
   }
+}
 
 export default MyArticles;

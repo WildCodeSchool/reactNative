@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, View, Alert, TextInput, ImageBackground } from 'react-native';
 import { Button, Header } from 'react-native-elements';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 class ModalAddArticle extends Component {
@@ -41,9 +42,11 @@ class ModalAddArticle extends Component {
           <View
             style={{
               flex: 1,
+              backgroundColor: 'black'
             }}
           >
             <Header
+              backgroundColor='black'
               leftComponent={{
                 icon: 'arrow-back',
                 color: '#fff',
@@ -56,6 +59,7 @@ class ModalAddArticle extends Component {
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
+                backgroundColor: 'black',
               }}
             >
               <ImageBackground
@@ -111,5 +115,10 @@ class ModalAddArticle extends Component {
     );
   }
 }
+
+ModalAddArticle.propTypes = {
+  uid: PropTypes.string,
+  name: PropTypes.string,
+};
 
 export default ModalAddArticle;
