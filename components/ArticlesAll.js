@@ -6,6 +6,8 @@ import {
   ActivityIndicator,
   FlatList,
   Alert,
+  Linking,
+  Text,
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import ModalAddArticle from './ModalAddArticle';
@@ -31,55 +33,65 @@ class ArticlesAll extends Component {
   componentDidMount() {
     const articles = [];
     this.setState({ loading: true });
-    fire
-      .database()
-      .ref('articles/')
-      .once('value', snapshot => {
-        snapshot.forEach(childSnapshot => {
-          const childKey = childSnapshot.key;
-          const childData = childSnapshot.val();
-          const article = { key: childKey, ...childData };
-          articles.push(article);
-        });
-      })
-      .then(() => {
-        this.setState({
-          articles,
-          loading: false,
-        });
-      })
-      .catch(error => Alert.alert(error));
+    this.ref = fire.auth().onAuthStateChanged(user => {
+      console.log(user);
+      fire
+        .database()
+        .ref('articles/')
+        .once('value', snapshot => {
+          snapshot.forEach(childSnapshot => {
+            const childKey = childSnapshot.key;
+            const childData = childSnapshot.val();
+            const article = { key: childKey, ...childData };
+            articles.push(article);
+          });
+        })
+        .then(() => {
+          this.setState({
+            articles,
+            loading: false,
+            uid: user.uid,
+            name: user.displayName,
+          });
+        })
+        .catch(error => Alert.alert(error));
+    });
+  }
+
+  componentWillUnmount() {
+    this.ref();
   }
 
   render() {
-    const { loading, articles = [] } = this.state;
+    const { loading, articles = [], uid, name } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, justifyContent: 'space-between' }}>
         {loading ? (
           <View style={styles.view}>
             <ActivityIndicator />
           </View>
         ) : (
-          <View syle={{ flex: 1 }}>
-            <ScrollView>
-              <FlatList
-                data={articles}
-                renderItem={({ item }) => (
+          <ScrollView>
+            <FlatList
+              data={articles}
+              renderItem={({ item }) => (
+                <View>
+                  <Text>Ajouté par {item.name}</Text>
                   <ListItem
-                    roundAvatar
                     avatar={{ uri: item.imageUrl }}
                     key={item.key}
                     title={item.title}
                     subtitleNumberOfLines={5}
                     subtitle={item.description}
+                    onPress={() => Linking.openURL(item.url)}
                   />
-                )}
-              />
-            </ScrollView>
-          </View>
+                </View>
+              )}
+            />
+          </ScrollView>
         )}
-        <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-          <ModalAddArticle />
+        <View>
+          <ModalAddArticle uid={uid} name={name} />
         </View>
       </View>
     );

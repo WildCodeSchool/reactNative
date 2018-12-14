@@ -16,14 +16,14 @@ const saveArticle = async (req, res) => {
   console.log(req.body);
 
   const { body } = req;
-  const { url } = body;
-  await getDocumentData(url)
-    .then(response =>
+  const { url, uid, name } = body;
+  await getDocumentData(url, uid, name)
+    .then(response => {
       fire
         .database()
         .ref('articles')
-        .push(response)
-    )
+        .push(response);
+    })
     .then(() => res.status(201))
     .catch(error => console.log(error));
 };

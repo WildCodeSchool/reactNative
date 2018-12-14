@@ -11,7 +11,7 @@ const getHostName = url => {
     : domainAndTld;
 };
 
-const getDocumentData = async url => {
+const getDocumentData = async (url, uid, name) => {
   const response = await request.get(url);
   const $ = cheerio.load(response);
   const canonicalUrl = $('link[rel=canonical]').attr('href') || url;
@@ -20,6 +20,9 @@ const getDocumentData = async url => {
     $('meta[name=description]').attr('content');
 
   return {
+    name,
+    uid,
+    url,
     title: $('title').text(),
     description,
     imageUrl: $('meta[property="og:image"]').attr('content'),

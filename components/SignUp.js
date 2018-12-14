@@ -31,17 +31,33 @@ class SignUp extends React.Component {
   }
 
   createUser = () => {
-    const { email, password } = this.state;
+    const { email, password, username } = this.state;
     const { history } = this.props;
     this.setState({ loading: true });
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        const user = fire.auth().currentUser;
+        user
+          .updateProfile({
+            displayName: username,
+          })
+          .then(() => {
+            console.log('profil updated');
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
       .then(() => this.setState({ loading: false }))
       .then(() => {
         history.push('/articles');
       })
-      .catch(error => Alert.alert(error.message));
+      .catch(error => {
+        this.setState({ loading: false });
+        Alert.alert(error.message);
+      });
   };
 
   render() {
@@ -80,8 +96,7 @@ class SignUp extends React.Component {
           <Button
             buttonStyle={styles.button}
             title="SUBMIT"
-            // onPress={this.createUser}
-            onPress={() => history.push('/articles')}
+            onPress={this.createUser}
             loading={loading}
           />
         </View>

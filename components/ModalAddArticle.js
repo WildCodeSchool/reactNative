@@ -15,9 +15,12 @@ class ModalAddArticle extends Component {
 
   addArticle = () => {
     const { url } = this.state;
+    const { uid, name } = this.props;
     axios
       .post('http://192.168.1.144:3004/articles', {
         url,
+        uid,
+        name,
       })
       .then(() => this.setState({ modalVisible: false }))
       .catch(error => error.response);
