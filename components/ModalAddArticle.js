@@ -42,11 +42,11 @@ class ModalAddArticle extends Component {
           <View
             style={{
               flex: 1,
-              backgroundColor: 'black'
+              backgroundColor: 'black',
             }}
           >
             <Header
-              backgroundColor='black'
+              backgroundColor="black"
               leftComponent={{
                 icon: 'arrow-back',
                 color: '#fff',

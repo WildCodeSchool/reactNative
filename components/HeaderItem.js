@@ -40,7 +40,7 @@ class HeaderItem extends Component {
     const { name } = this.state;
     return (
       <Header
-        backgroundColor='black'
+        backgroundColor="black"
         centerComponent={{ text: 'DARK SIDE', style: { color: '#fff' } }}
         rightComponent={
           <Icon
