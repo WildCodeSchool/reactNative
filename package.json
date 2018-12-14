@@ -2,6 +2,7 @@
   "name": "empty-project-template",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "proxy": "http://localhost:3004/",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -28,6 +29,7 @@
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "cheerio": "^1.0.0-rc.2",
     "enzyme": "^3.7.0",
