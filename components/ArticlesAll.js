@@ -34,27 +34,28 @@ class ArticlesAll extends Component {
     const articles = [];
     this.setState({ loading: true });
     this.ref = fire.auth().onAuthStateChanged(user => {
-      console.log(user);
-      fire
-        .database()
-        .ref('articles/')
-        .once('value', snapshot => {
-          snapshot.forEach(childSnapshot => {
-            const childKey = childSnapshot.key;
-            const childData = childSnapshot.val();
-            const article = { key: childKey, ...childData };
-            articles.push(article);
-          });
-        })
-        .then(() => {
-          this.setState({
-            articles,
-            loading: false,
-            uid: user.uid,
-            name: user.displayName,
-          });
-        })
-        .catch(error => Alert.alert(error));
+      if (user) {
+        fire
+          .database()
+          .ref('articles/')
+          .once('value', snapshot => {
+            snapshot.forEach(childSnapshot => {
+              const childKey = childSnapshot.key;
+              const childData = childSnapshot.val();
+              const article = { key: childKey, ...childData };
+              articles.push(article);
+            });
+          })
+          .then(() => {
+            this.setState({
+              articles,
+              loading: false,
+              uid: user.uid,
+              name: user.displayName,
+            });
+          })
+          .catch(error => Alert.alert(error));
+      }
     });
   }
 
@@ -76,7 +77,10 @@ class ArticlesAll extends Component {
               data={articles}
               renderItem={({ item }) => (
                 <View>
-                  <Text>Ajouté par {item.name}</Text>
+                  <Text>
+                    Ajouté par
+                    {item.name}
+                  </Text>
                   <ListItem
                     avatar={{ uri: item.imageUrl }}
                     key={item.key}
