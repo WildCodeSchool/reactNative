@@ -31,7 +31,7 @@ class ArticlesAll extends Component {
       articles: [],
     };
   }
-
+  
   componentDidMount() {
     const articles = [];
     this.setState({ loading: true });
@@ -60,11 +60,11 @@ class ArticlesAll extends Component {
       }
     });
   }
-
+  
   componentWillUnmount() {
     this.ref();
   }
-
+  
   render() {
     const { loading, articles = [], uid, name } = this.state;
     return (
@@ -86,13 +86,7 @@ class ArticlesAll extends Component {
                 data={articles}
                 renderItem={({ item }) => (
                   <View>
-                    <Text
-                      style={{
-                        color: 'white',
-                        fontStyle: 'italic',
-                        fontSize: 15,
-                      }}
-                    >
+                    <Text style={{color:'white', fontStyle:'italic', fontSize: 15}}>
                       Ajouté par
                       {item.name}
                     </Text>

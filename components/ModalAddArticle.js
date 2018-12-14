@@ -73,6 +73,7 @@ class ModalAddArticle extends Component {
                   style={{
                     height: 50,
                     width: '100%',
+                    color: 'gray',
                     borderColor: 'gray',
                     borderWidth: 2,
                     paddingLeft: 5,
@@ -115,6 +116,7 @@ class ModalAddArticle extends Component {
     );
   }
 }
+
 
 ModalAddArticle.propTypes = {
   uid: PropTypes.string,

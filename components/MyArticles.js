@@ -33,7 +33,7 @@ class MyArticles extends React.Component {
       articles: [],
     };
   }
-
+  
   componentDidMount() {
     const articles = [];
     this.setState({ loading: true });
@@ -60,11 +60,11 @@ class MyArticles extends React.Component {
         .catch(error => Alert.alert(error));
     });
   }
-
+  
   componentWillUnmount() {
     this.ref();
   }
-
+  
   render() {
     const { loading, articles = [] } = this.state;
     return (
@@ -78,7 +78,7 @@ class MyArticles extends React.Component {
         >
           {loading ? (
             <View style={styles.view}>
-              <ActivityIndicator />
+              <ActivityIndicator/>
             </View>
           ) : (
             <ScrollView>
