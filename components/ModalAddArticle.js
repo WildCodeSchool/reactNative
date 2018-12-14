@@ -41,9 +41,11 @@ class ModalAddArticle extends Component {
           <View
             style={{
               flex: 1,
+              backgroundColor: 'black',
             }}
           >
             <Header
+              backgroundColor="black"
               leftComponent={{
                 icon: 'arrow-back',
                 color: '#fff',
@@ -56,6 +58,7 @@ class ModalAddArticle extends Component {
                 flex: 1,
                 alignItems: 'center',
                 justifyContent: 'center',
+                backgroundColor: 'black',
               }}
             >
               <ImageBackground
@@ -69,6 +72,7 @@ class ModalAddArticle extends Component {
                   style={{
                     height: 50,
                     width: '100%',
+                    color: 'gray',
                     borderColor: 'gray',
                     borderWidth: 2,
                     paddingLeft: 5,

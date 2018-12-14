@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import { Header, Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
-import { Alert } from 'react-native';
+import { Alert, Text } from 'react-native';
 import { withRouter } from 'react-router-native';
 import fire from '../firebase/firebase';
 
 class HeaderItem extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { name: 'Guest' };
+  }
+
+  componentDidMount() {
+    this.ref = fire.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ name: user.displayName });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.ref();
   }
 
   handleSignOut = () => {
@@ -25,8 +37,10 @@ class HeaderItem extends Component {
   };
 
   render() {
+    const { name } = this.state;
     return (
       <Header
+        backgroundColor="black"
         centerComponent={{ text: 'DARK SIDE', style: { color: '#fff' } }}
         rightComponent={
           <Icon
@@ -37,7 +51,7 @@ class HeaderItem extends Component {
             onPress={() => this.handleSignOut()}
           />
         }
-        containerStyle={{ backgroundColor: '#000000' }}
+        leftComponent={<Text style={{ color: 'white' }}>{name}</Text>}
       />
     );
   }

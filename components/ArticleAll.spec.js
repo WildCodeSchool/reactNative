@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import ModalAddArticles from './ModalAddArticle';
 
 import ArticlesAll from './ArticlesAll';
