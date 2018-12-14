@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Header, Icon } from 'react-native-elements';
 import PropTypes from 'prop-types';
+import { Alert } from 'react-native';
 import { withRouter } from 'react-router-native';
+import fire from '../firebase/firebase';
 
 class HeaderItem extends Component {
   constructor(props) {
@@ -9,8 +11,20 @@ class HeaderItem extends Component {
     this.state = {};
   }
 
-  render() {
+  handleSignOut = () => {
     const { history } = this.props;
+    fire
+      .auth()
+      .signOut()
+      .then(() => {
+        history.push('/');
+      })
+      .catch(error => {
+        Alert.alert(error);
+      });
+  };
+
+  render() {
     return (
       <Header
         centerComponent={{ text: 'TITLE', style: { color: '#fff' } }}
@@ -19,7 +33,7 @@ class HeaderItem extends Component {
             name="sign-out"
             type="octicon"
             color="#fff"
-            onPress={() => history.push('/')}
+            onPress={() => this.handleSignOut()}
           />
         }
       />

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, View, Alert, TextInput } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Header } from 'react-native-elements';
 import axios from 'axios';
 
 class ModalAddArticle extends Component {
@@ -38,9 +38,16 @@ class ModalAddArticle extends Component {
           <View
             style={{
               flex: 1,
-              padding: 15,
             }}
           >
+            <Header
+              leftComponent={{
+                icon: 'arrow-back',
+                color: '#fff',
+                onPress: () => this.setModalVisible(!modalVisible),
+              }}
+            />
+
             <View
               style={{
                 flex: 1,
@@ -63,7 +70,7 @@ class ModalAddArticle extends Component {
                 value={url}
               />
             </View>
-            <View style={{ justifyContent: 'flex-end' }}>
+            <View style={{ justifyContent: 'flex-end', marginBottom: 20 }}>
               <Button
                 onPress={() => {
                   this.addArticle();

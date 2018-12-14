@@ -28,8 +28,8 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      email: 'hello@test.fr',
+      password: '123456',
       loading: false,
     };
   }
@@ -40,7 +40,7 @@ class SignIn extends React.Component {
     this.setState({ loading: true });
     fire
       .auth()
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ loading: false });
         history.push('/articles');
