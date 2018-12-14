@@ -27,15 +27,17 @@ class HeaderItem extends Component {
   render() {
     return (
       <Header
-        centerComponent={{ text: 'TITLE', style: { color: '#fff' } }}
+        centerComponent={{ text: 'DARK SIDE', style: { color: '#fff' } }}
         rightComponent={
           <Icon
+            style={{ backgroundColor: 'black' }}
             name="sign-out"
             type="octicon"
             color="#fff"
             onPress={() => this.handleSignOut()}
           />
         }
+        containerStyle={{ backgroundColor: '#000000' }}
       />
     );
   }

@@ -46,13 +46,13 @@ class Segment extends Component {
     }
 
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
         <HeaderItem />
         <ButtonGroup
           selectedIndex={selectedIndex}
           onPress={this.updateIndex}
           buttons={buttons}
-          containerStyle={{ height: 50 }}
+          containerStyle={{ height: 50, borderRadius: 0 }}
         />
         <View style={{ flex: 1, padding: 15 }}>{rendering}</View>
       </View>

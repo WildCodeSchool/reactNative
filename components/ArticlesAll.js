@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   View,
+  Text,
   StyleSheet,
   ScrollView,
   ActivityIndicator,
@@ -8,6 +9,7 @@ import {
   Alert,
   Linking,
   Text,
+  ImageBackground
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import ModalAddArticle from './ModalAddArticle';
@@ -16,6 +18,7 @@ import fire from '../firebase/firebase';
 const styles = StyleSheet.create({
   view: {
     flex: 1,
+    backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -66,6 +69,13 @@ class ArticlesAll extends Component {
     const { loading, articles = [], uid, name } = this.state;
     return (
       <View style={{ flex: 1, justifyContent: 'space-between' }}>
+        <ImageBackground
+          source={{
+            uri:
+              'https://i.pinimg.com/originals/1e/72/5a/1e725a00b236422fd8210b9f083c2c53.jpg',
+          }}
+          style={{ width: '100%', height: '100%', borderColor: 'black' }}
+        >
         {loading ? (
           <View style={styles.view}>
             <ActivityIndicator />
@@ -93,7 +103,7 @@ class ArticlesAll extends Component {
         <View>
           <ModalAddArticle uid={uid} name={name} />
         </View>
-      </View>
+        </ImageBackground>
     );
   }
 }

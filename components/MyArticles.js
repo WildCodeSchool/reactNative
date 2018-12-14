@@ -7,6 +7,7 @@ import {
   FlatList,
   Alert,
   Linking,
+  ImageBackground,
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import fire from '../firebase/firebase';
@@ -14,7 +15,8 @@ import fire from '../firebase/firebase';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
+    justifyContent: 'space-between',
   },
   view: {
     flex: 1,
@@ -68,6 +70,13 @@ class MyArticles extends React.Component {
     const { loading, articles = [] } = this.state;
     return (
       <View style={{ flex: 1 }}>
+        <ImageBackground
+          source={{
+            uri:
+              'https://i.pinimg.com/originals/1e/72/5a/1e725a00b236422fd8210b9f083c2c53.jpg',
+          }}
+          style={{ width: '100%', height: '100%', borderColor: 'black' }}
+        >
         {loading ? (
           <View style={styles.view}>
             <ActivityIndicator />
@@ -89,8 +98,9 @@ class MyArticles extends React.Component {
             />
           </ScrollView>
         )}
+        </ImageBackground>
       </View>
     );
   }
-}
+
 export default MyArticles;
