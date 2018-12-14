@@ -46,6 +46,7 @@ class SignUp extends React.Component {
 
   render() {
     const { username, email, password, loading } = this.state;
+    const { history } = this.props;
     return (
       <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
         <View style={styles.view}>
@@ -79,7 +80,8 @@ class SignUp extends React.Component {
           <Button
             buttonStyle={styles.button}
             title="SUBMIT"
-            onPress={this.createUser}
+            // onPress={this.createUser}
+            onPress={() => history.push('/articles')}
             loading={loading}
           />
         </View>
